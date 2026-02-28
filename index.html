@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Central de Pesquisa Criativa - IA</title>
+    <link rel="stylesheet" href="/src/style.css">
+  </head>
+  <body>
+    <div id="app">
+      <div class="container">
+        <!-- Header -->
+        <header class="header">
+          <div class="header-content">
+            <div class="logo-section">
+              <div class="logo-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2L2 7L12 12L22 7L12 2Z"/>
+                  <path d="M2 17L12 22L22 17"/>
+                  <path d="M2 12L12 17L22 12"/>
+                </svg>
+              </div>
+              <div class="logo-text">
+                <h1>Creative AI Research</h1>
+                <p>Descubra os criativos de maior sucesso com IA</p>
+              </div>
+            </div>
+            <div class="header-stats">
+              <div class="stat-card">
+                <span class="stat-value" id="totalSearches">0</span>
+                <span class="stat-label">Pesquisas</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-value" id="totalInsights">0</span>
+                <span class="stat-label">Insights</span>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Search Section -->
+        <section class="search-section">
+          <div class="search-container">
+            <h2 class="search-title">O que você quer pesquisar?</h2>
+            <p class="search-subtitle">Pergunte sobre qualquer categoria de criativo e descubra os que mais convertem</p>
+            
+            <div class="search-box">
+              <textarea 
+                id="searchInput" 
+                placeholder="Ex: Quais são os melhores criativos para e-commerce de moda feminina? Ou: Me mostre anúncios de sucesso para apps de fitness..."
+                rows="3"
+              ></textarea>
+              <button id="searchButton" class="search-button">
+                <span class="button-text">Pesquisar</span>
+                <svg class="button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"/>
+                  <path d="m21 21-4.35-4.35"/>
+                </svg>
+              </button>
+            </div>
+
+            <div class="quick-categories">
+              <h3>Categorias Populares:</h3>
+              <div class="category-tags">
+                <button class="category-tag" data-category="E-commerce">E-commerce</button>
+                <button class="category-tag" data-category="SaaS">SaaS</button>
+                <button class="category-tag" data-category="Apps Mobile">Apps Mobile</button>
+                <button class="category-tag" data-category="Fitness">Fitness</button>
+                <button class="category-tag" data-category="Educação">Educação</button>
+                <button class="category-tag" data-category="Moda">Moda</button>
+                <button class="category-tag" data-category="Tecnologia">Tecnologia</button>
+                <button class="category-tag" data-category="Alimentação">Alimentação</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="results-section" id="resultsSection">
+          <div class="results-container">
+            <div class="results-header">
+              <h2>Análise de Criativos</h2>
+              <button class="filter-button" id="filterButton">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/>
+                </svg>
+                Filtros
+              </button>
+            </div>
+
+            <!-- Loading State -->
+            <div class="loading-state" id="loadingState">
+              <div class="loading-spinner"></div>
+              <p>Analisando criativos de sucesso...</p>
+            </div>
+
+            <!-- Results Grid -->
+            <div class="results-grid" id="resultsGrid">
+              <!-- Results will be inserted here -->
+            </div>
+
+            <!-- AI Insights -->
+            <div class="ai-insights" id="aiInsights">
+              <h3>💡 Insights da IA</h3>
+              <div class="insights-content" id="insightsContent">
+                <!-- Insights will be inserted here -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- History Section -->
+        <section class="history-section">
+          <div class="history-container">
+            <h3>Histórico de Pesquisas</h3>
+            <div class="history-list" id="historyList">
+              <!-- History items will be inserted here -->
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Modal for API Key -->
+      <div class="modal" id="apiKeyModal">
+        <div class="modal-content">
+          <h2>Configure sua API Key</h2>
+          <p>Para usar a pesquisa com IA, você precisa adicionar sua chave da OpenAI</p>
+          <input 
+            type="password" 
+            id="apiKeyInput" 
+            placeholder="sk-..." 
+            class="api-key-input"
+          />
+          <div class="modal-actions">
+            <button class="button-secondary" onclick="closeApiKeyModal()">Cancelar</button>
+            <button class="button-primary" onclick="saveApiKey()">Salvar</button>
+          </div>
+          <p class="modal-note">
+            <a href="https://platform.openai.com/api-keys" target="_blank">Obter API Key →</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
